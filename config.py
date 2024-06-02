@@ -84,6 +84,8 @@ STRING4 = getenv("STRING_SESSION4", None)
 STRING5 = getenv("STRING_SESSION5", None)
 
 
+
+
 #    __      _______ _____    ___  __ _    _  _____ _____ _____   _____   ____ _______ 
 #    \ \    / /_   _|  __ \   |  \/  | |  | |/ ____|_   _/ ____|  |  _ \ / __ \__   __|
 #     \ \  / /  | | | |__) |  | \  / | |  | | (___   | || |       | |_) | |  | | | |   
@@ -123,6 +125,7 @@ SPOTIFY_ARTIST_IMG_URL = "https://telegra.ph/file/199ad08f2086c4d4fdb4b.jpg"
 SPOTIFY_ALBUM_IMG_URL = "https://telegra.ph/file/199ad08f2086c4d4fdb4b.jpg"
 SPOTIFY_PLAYLIST_IMG_URL = "https://telegra.ph/file/199ad08f2086c4d4fdb4b.jpg"
 
+PREFIXES = ["/", "!", "@", "#"]
 
 def time_to_seconds(time):
     stringt = str(time)
