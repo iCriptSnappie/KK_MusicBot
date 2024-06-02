@@ -1,30 +1,29 @@
-import requests
 import random
-from KKBOTS import telethn as tbot
-from KKBOTS.events import register
-from pyrogram.types import Message
+from pyrogram import Client, filters
+import requests
 
 GPT_API_URL = "https://chatgpt.apinepdev.workers.dev"
 
 MSG_POST_URL = ['', '']
 
-@register(pattern="^/prompt(?: (.*)|$)")
-async def chat_gpt(event):
-    if event.fwd_from:
+@Client.on_message(filters.command("prompt"))
+async def chat_gpt(client, message):
+    if message.forward_from:
         return
 
-    query = event.pattern_match.group(1)
+    query = message.text.split(maxsplit=1)
+    query = query[1] if len(query) > 1 else None
 
     if not query:
-        if event.reply_to_message:
-            replied_msg = await event.get_reply_message()
+        if message.reply_to_message:
+            replied_msg = await client.get_messages(message.chat.id, message.reply_to_message.message_id)
             if replied_msg and replied_msg.text:
                 query = replied_msg.text
             else:
-                await event.reply("❍ The replied message does not contain text.")
+                await message.reply_text("❍ The replied message does not contain text.")
                 return
         else:
-            await event.reply("❍ Please provide a question after the /prompt command or reply to a message.")
+            await message.reply_text("❍ Please provide a question after the /prompt command or reply to a message.")
             return
 
     try:
@@ -36,10 +35,11 @@ async def chat_gpt(event):
             # Select a random post URL
             signature = random.choice(MSG_POST_URL)
             reply_message = f"{answer}\n\n{signature}"
-            await event.reply(reply_message)
+            await message.reply_text(reply_message)
         else:
-            await event.reply("Error communicating with ChatGPT API.")
+            await message.reply_text("Error communicating with ChatGPT API.")
     except requests.exceptions.RequestException as e:
-        await event.reply(f"Error: {str(e)}. Please try again later.")
+        await message.reply_text(f"Error: {str(e)}. Please try again later.")
     except Exception as e:
-        await event.reply(f"Unexpected error: {str(e)}. Please try again later.")
+        await message.reply_text(f"Unexpected error: {str(e)}. Please try again later.")
+
