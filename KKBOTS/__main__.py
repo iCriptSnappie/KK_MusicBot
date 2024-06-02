@@ -38,8 +38,8 @@ async def init():
         importlib.import_module("KKBOTS.plugins" + all_module)
     LOGGER("KKBOTS.plugins").info("All features have been successfully loaded.")
     await userbot.start()
-    await VIP.start()
-    await VIP.decorators()
+    await KK.start()
+    await KK.decorators()
     LOGGER("KKBOTS").info("╔═════ஜ۩۞۩ஜ════╗\n  ♨️𝗠𝗔𝗗𝗘 𝗕𝗬 𝗞𝗘𝗥𝗡𝗘𝗟 𝗞𝗡𝗜𝗚𝗛𝗧♨️\n╚═════ஜ۩۞۩ஜ════╝"
     )
     await idle()
