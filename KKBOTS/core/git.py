@@ -10,34 +10,33 @@ import config
 from ..logging import LOGGER
 
 
-async def install_requirements(cmd: str) -> Tuple[str, str, int, int]:
-    args = shlex.split(cmd)
-    process = await asyncio.create_subprocess_exec(
-        *args,
-        stdout=asyncio.subprocess.PIPE,
-        stderr=asyncio.subprocess.PIPE,
-    )
-    stdout, stderr = await process.communicate()
-    return (
-        stdout.decode("utf-8", "replace").strip(),
-        stderr.decode("utf-8", "replace").strip(),
-        process.returncode,
-        process.pid,
-    )
+def install_req(cmd: str) -> Tuple[str, str, int, int]:
+    async def install_requirements():
+        args = shlex.split(cmd)
+        process = await asyncio.create_subprocess_exec(
+            *args,
+            stdout=asyncio.subprocess.PIPE,
+            stderr=asyncio.subprocess.PIPE,
+        )
+        stdout, stderr = await process.communicate()
+        return (
+            stdout.decode("utf-8", "replace").strip(),
+            stderr.decode("utf-8", "replace").strip(),
+            process.returncode,
+            process.pid,
+        )
+
+    return asyncio.get_event_loop().run_until_complete(install_requirements())
 
 
-def get_upstream_repo_link():
+def git():
     REPO_LINK = config.UPSTREAM_REPO
     if config.GIT_TOKEN:
         GIT_USERNAME = REPO_LINK.split("com/")[1].split("/")[0]
         TEMP_REPO = REPO_LINK.split("https://")[1]
-        return f"https://{GIT_USERNAME}:{config.GIT_TOKEN}@{TEMP_REPO}"
+        UPSTREAM_REPO = f"https://{GIT_USERNAME}:{config.GIT_TOKEN}@{TEMP_REPO}"
     else:
-        return REPO_LINK
-
-
-def git():
-    UPSTREAM_REPO = get_upstream_repo_link()
+        UPSTREAM_REPO = config.UPSTREAM_REPO
     try:
         repo = Repo()
         LOGGER(__name__).info(f"Git Client Found [VPS DEPLOYER]")
@@ -45,11 +44,18 @@ def git():
         LOGGER(__name__).info(f"Invalid Git Command")
     except InvalidGitRepositoryError:
         repo = Repo.init()
-        origin = repo.remote("origin") if "origin" in repo.remotes else repo.create_remote("origin", UPSTREAM_REPO)
+        if "origin" in repo.remotes:
+            origin = repo.remote("origin")
+        else:
+            origin = repo.create_remote("origin", UPSTREAM_REPO)
         origin.fetch()
-        upstream_branch_ref = origin.refs[config.UPSTREAM_BRANCH]
-        repo.create_head(config.UPSTREAM_BRANCH, upstream_branch_ref)
-        repo.heads[config.UPSTREAM_BRANCH].set_tracking_branch(upstream_branch_ref)
+        repo.create_head(
+            config.UPSTREAM_BRANCH,
+            origin.refs[config.UPSTREAM_BRANCH],
+        )
+        repo.heads[config.UPSTREAM_BRANCH].set_tracking_branch(
+            origin.refs[config.UPSTREAM_BRANCH]
+        )
         repo.heads[config.UPSTREAM_BRANCH].checkout(True)
         try:
             repo.create_remote("origin", config.UPSTREAM_REPO)
