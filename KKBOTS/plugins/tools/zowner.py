@@ -15,7 +15,7 @@
 #     & filters.group)
 # async def help(client: Client, message: Message):
 #     await message.reply_photo(
-#         photo=f"https://telegra.ph/file/199ad08f2086c4d4fdb4b.jpg",
+#         photo=f"https://graph.org/file/41753ece603202ac1b0a2.jpg",
 #         caption=f"""🍁𝐂𝐋𝐈𝐂𝐊🥰𝐁𝐄𝐋𝐎𝐖💝𝐁𝐔𝐓𝐓𝐎𝐍✨𝐓𝐎🙊𝐆𝐄𝐓🌱𝐑𝐄𝐏𝐎🍁""",
 #         reply_markup=InlineKeyboardMarkup(
 #             [
@@ -32,7 +32,7 @@
 #     & filters.group)
 # async def help(client: Client, message: Message):
 #     await message.reply_photo(
-#         photo=f"https://telegra.ph/file/199ad08f2086c4d4fdb4b.jpg",
+#         photo=f"https://graph.org/file/41753ece603202ac1b0a2.jpg",
 #         caption=f"""🍁𝐂𝐋𝐈𝐂𝐊🥰𝐁𝐄𝐋𝐎𝐖💝𝐁𝐔𝐓𝐓𝐎𝐍✨𝐓𝐎🙊𝐆𝐄𝐓🌱𝐑𝐄𝐏𝐎🍁""",
 #         reply_markup=InlineKeyboardMarkup(
 #             [
@@ -49,7 +49,7 @@
 #     & filters.private)
 # async def help(client: Client, message: Message):
 #     await message.reply_photo(
-#         photo=f"https://telegra.ph/file/199ad08f2086c4d4fdb4b.jpg",
+#         photo=f"https://graph.org/file/41753ece603202ac1b0a2.jpg",
 #         caption=f"""🍁𝐂𝐋𝐈𝐂𝐊🥰𝐁𝐄𝐋𝐎𝐖💝𝐁𝐔𝐓𝐓𝐎𝐍✨𝐓𝐎🙊𝐆𝐄𝐓🌱𝐑𝐄𝐏𝐎🍁""",
 #         reply_markup=InlineKeyboardMarkup(
 #             [

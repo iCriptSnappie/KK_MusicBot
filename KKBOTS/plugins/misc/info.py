@@ -11,8 +11,8 @@ import random
 from config import PREFIXES
 
 random_photo = [
-    "https://telegra.ph/file/cf283a595e8e01c5e4f73.jpg",
-    "https://telegra.ph/file/39c681442038b559be2f1.jpg",
+    "https://graph.org/file/8a13ad0c965182d05b746.jpg",
+    "",
 ]
 
 # --------------------------------------------------------------------------------- #

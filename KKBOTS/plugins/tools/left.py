@@ -22,8 +22,8 @@ from logging import getLogger
 from KKBOTS.utils.kk_ban import admin_filter
 
 random_photo = [
-    "https://telegra.ph/file/39c681442038b559be2f1.jpg",
-    "https://telegra.ph/file/cf283a595e8e01c5e4f73.jpg",
+    "https://graph.org/file/4dfce969e9455b81063ef.jpg",
+    "https://graph.org/file/0591e20168536ef2c1cda.jpg",
 ]
 
 # --------------------------------------------------------------------------------- #
