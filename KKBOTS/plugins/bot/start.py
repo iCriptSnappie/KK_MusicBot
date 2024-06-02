@@ -1,6 +1,5 @@
 import time
 import random
-import asyncio
 from pyrogram import filters
 from pyrogram.enums import ChatType
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, Message
@@ -45,7 +44,7 @@ async def start_pm(client, message: Message, _):
         name = message.text.split(None, 1)[1]
         if name[0:4] == "help":
             keyboard = first_page(_)
-            await message.reply_photo(
+            return await message.reply_photo(
                 photo=config.START_IMG_URL,
                 caption=_["help_1"].format(config.SUPPORT_CHAT),
                 reply_markup=keyboard,
@@ -53,7 +52,7 @@ async def start_pm(client, message: Message, _):
         if name[0:3] == "sud":
             await sudoers_list(client=client, message=message, _=_)
             if await is_on_off(2):
-                await app.send_message(
+                return await app.send_message(
                     chat_id=config.LOGGER_ID,
                     text=f"{message.from_user.mention} ᴊᴜsᴛ sᴛᴀʀᴛᴇᴅ ᴛʜᴇ ʙᴏᴛ ᴛᴏ ᴄʜᴇᴄᴋ <b>sᴜᴅᴏʟɪsᴛ</b>.\n\n<b>ᴜsᴇʀ ɪᴅ :</b> <code>{message.from_user.id}</code>\n<b>ᴜsᴇʀɴᴀᴍᴇ :</b> @{message.from_user.username}",
                 )
@@ -91,24 +90,19 @@ async def start_pm(client, message: Message, _):
                 reply_markup=key,
             )
             if await is_on_off(2):
-                await app.send_message(
+                return await app.send_message(
                     chat_id=config.LOGGER_ID,
                     text=f"{message.from_user.mention} ᴊᴜsᴛ sᴛᴀʀᴛᴇᴅ ᴛʜᴇ ʙᴏᴛ ᴛᴏ ᴄʜᴇᴄᴋ <b>ᴛʀᴀᴄᴋ ɪɴғᴏʀᴍᴀᴛɪᴏɴ</b>.\n\n<b>ᴜsᴇʀ ɪᴅ :</b> <code>{message.from_user.id}</code>\n<b>ᴜsᴇʀɴᴀᴍᴇ :</b> @{message.from_user.username}",
                 )
     else:
         out = private_panel(_)
-        loading_message = await message.reply_text("**Loading**")
-        for _ in range(3):
-            await asyncio.sleep(1)
-            await loading_message.edit_text(f"**Loading{'.' * (_ % 3 + 1)}**")
-        await loading_message.delete()
         await message.reply_photo(
             photo=config.START_IMG_URL,
             caption=_["start_2"].format(message.from_user.mention, app.mention),
             reply_markup=InlineKeyboardMarkup(out),
         )
         if await is_on_off(2):
-            await app.send_message(
+            return await app.send_message(
                 chat_id=config.LOGGER_ID,
                 text=f"{message.from_user.mention} ᴊᴜsᴛ sᴛᴀʀᴛᴇᴅ ᴛʜᴇ ʙᴏᴛ.\n\n<b>ᴜsᴇʀ ɪᴅ :</b> <code>{message.from_user.id}</code>\n<b>ᴜsᴇʀɴᴀᴍᴇ :</b> @{message.from_user.username}",
             )
@@ -124,7 +118,7 @@ async def start_gp(client, message: Message, _):
         caption=_["start_1"].format(app.mention, get_readable_time(uptime)),
         reply_markup=InlineKeyboardMarkup(out),
     )
-    await add_served_chat(message.chat.id)
+    return await add_served_chat(message.chat.id)
 
 
 @app.on_message(filters.new_chat_members, group=-1)
@@ -141,7 +135,7 @@ async def welcome(client, message: Message):
             if member.id == app.id:
                 if message.chat.type != ChatType.SUPERGROUP:
                     await message.reply_text(_["start_4"])
-                    await app.leave_chat(message.chat.id)
+                    return await app.leave_chat(message.chat.id)
                 if message.chat.id in await blacklisted_chats():
                     await message.reply_text(
                         _["start_5"].format(
@@ -151,7 +145,7 @@ async def welcome(client, message: Message):
                         ),
                         disable_web_page_preview=True,
                     )
-                    await app.leave_chat(message.chat.id)
+                    return await app.leave_chat(message.chat.id)
 
                 out = start_panel(_)
                 await message.reply_photo(
