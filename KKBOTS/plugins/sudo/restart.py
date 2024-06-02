@@ -22,6 +22,7 @@ from KKBOTS.utils.database import (
 )
 from KKBOTS.utils.decorators.language import language
 from KKBOTS.utils.pastebin import VIPBin
+from config import PREFIXES
 
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
