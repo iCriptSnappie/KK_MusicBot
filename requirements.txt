@@ -25,8 +25,8 @@ qrcode
 pytz
 future==0.18.3
 search_engine_parser
-tgcalls==2.0.0
 pytgcalls==2.1.0
+tgcalls
 pykeyboard
 pyshorteners
 pyrogram==2.0.106
