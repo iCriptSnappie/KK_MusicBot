@@ -40,7 +40,7 @@ async def init():
     await userbot.start()
     await KK.start()
     await KK.decorators()
-    LOGGER("KKBOTS").info("╔═════ஜ۩۞۩ஜ════╗\n  ♨️𝗠𝗔𝗗𝗘 𝗕𝗬 𝗞𝗘𝗥𝗡𝗘𝗟 𝗞𝗡𝗜𝗚𝗛𝗧♨️\n╚═════ஜ۩۞۩ஜ════╝"
+    LOGGER("KKBOTS").info("                 ╔═════ஜ۩۞۩ஜ════╗\n  ♨️𝗠𝗔𝗗𝗘 𝗕𝗬 𝗞𝗘𝗥𝗡𝗘𝗟 𝗞𝗡𝗜𝗚𝗛𝗧♨️\n╚═════ஜ۩۞۩ஜ════╝"
     )
     await idle()
     await app.stop()
