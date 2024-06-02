@@ -43,4 +43,3 @@ async def chat_gpt(client, message):
     except Exception as e:
         await message.reply_text(f"Unexpected error: {str(e)}. Please try again later.")
 
-app.run()
