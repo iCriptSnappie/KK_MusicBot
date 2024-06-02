@@ -1,0 +1,94 @@
+{
+  "name": "🌹⃝𖣔𝐕𝐈𝐏 𝐌𝐔𝐒𝐈𝐂🥀⛦⃕‌🇮🇳",
+  "description": "A Telegram Music Player Bot, written in Python with Pyrogram and Py-Tgcalls.",
+  "logo": "https://te.legra.ph/file/3a131483d8a27dbf41b3a.jpg",
+  "keywords": [
+      "python3",
+      "telegram",
+      "bot",
+      "KERNEL KNIGHT",
+      "MusicBot",
+      "telegram-bot",
+      "pyrogram"
+  ],
+  "env": {
+      "API_ID": {
+          "description": "Get API ID from https://my.telegram.org",
+          "value": "14050586",
+          "required": true
+      },
+      "API_HASH": {
+          "description": "Get API Hash from https://my.telegram.org",
+          "value": "42a60d9c657b106370c79bb0a8ac560c",
+          "required": true
+      },
+      "BOT_TOKEN": {
+          "description": "Get Bot Token from BotFather",
+          "value": "",
+          "required": true
+      },
+      "MONGO_DB_URI": {
+          "description": "Get a MongoDB URL from https://cloud.mongodb.com. If you don't have one, use the already filled Mongo.",
+          "value": "mongodb+srv://KernelKnight:ydZ37427VeAPfxLF@kkmusicbot.lcpmdty.mongodb.net/?retryWrites=true&w=majority&appName=KKMusicBot",
+          "required": true
+      },
+      "OWNER_ID": {
+          "description": "Enter the Owner ID here. You can use multiple IDs separated by a space.",
+          "value": "1808943146",
+          "required": true
+      },
+      "STRING_SESSION": {
+          "description": "Enter a Pyrogram V2 String Session here. If there's an error, send the error screenshot to the repo owner (Get it from t.me/KK_StringGeneratorBot).",
+          "value": "",
+          "required": true
+      },
+      "HEROKU_API_KEY": {
+          "description": "Enter your Heroku account API key. If unknown, leave this blank.",
+          "value": "",
+          "required": false
+      },
+      "HEROKU_APP_NAME": {
+          "description": "Enter your app name which was filled in the first line (app name).",
+          "value": "",
+          "required": false
+      },
+      "AUTO_GCAST": {
+          "description": "Enter [True] to enable auto Gcast/broadcast message, leave blank to disable.",
+          "value": "True",
+          "required": false
+      },
+      "AUTO_GCAST_MSG": {
+          "description": "Enter the auto broadcast message which will be broadcasted twice a day. Any type of message can be copied and pasted here.",
+          "value": "",
+          "required": false
+      },
+      "START_IMG_URL": {
+          "description": "Enter your start bot image URL. Get it from t.me/vTelegraphBot",
+          "value": "https://te.legra.ph/file/ecdeac045f4045c198bd6.jpg",
+          "required": false
+      },
+      "LOGGER_ID": {
+          "description": "Enter the log group ID where your bot is always an admin (ID must start with -100).",
+          "value": "",
+          "required": true
+      }
+  },
+  "buildpacks": [
+      {
+          "url": "heroku/python"
+      },
+      {
+          "url": "heroku/nodejs"
+      },
+      {
+          "url": "https://github.com/jonathanong/heroku-buildpack-ffmpeg-latest.git"
+      }
+  ],
+  "formation": {
+      "worker": {
+          "quantity": 1,
+          "size": "basic"
+      }
+  },
+  "stack": "container"
+}
