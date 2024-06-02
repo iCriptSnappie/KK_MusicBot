@@ -66,7 +66,7 @@ async def helper_cb(client, CallbackQuery, _):
             )
         else:
             await CallbackQuery.edit_message_text(
-                helpers.HELP_9, reply_markup=keyboard
+                helpers.HELP_9, reply_markup=keyboard, disable_web_page_preview=True
             )
             return await CallbackQuery.answer()
     try:
@@ -75,88 +75,88 @@ async def helper_cb(client, CallbackQuery, _):
         pass
     if cb == "hb1":
         await CallbackQuery.edit_message_text(
-            helpers.HELP_1, reply_markup=keyboard
+            helpers.HELP_1, reply_markup=keyboard, disable_web_page_preview=True
         )
     elif cb == "hb2":
         await CallbackQuery.edit_message_text(
-            helpers.HELP_2, reply_markup=keyboard
+            helpers.HELP_2, reply_markup=keyboard, disable_web_page_preview=True
         )
     elif cb == "hb3":
         await CallbackQuery.edit_message_text(
-            helpers.HELP_3, reply_markup=keyboard
+            helpers.HELP_3, reply_markup=keyboard, disable_web_page_preview=True
         )
     elif cb == "hb4":
         await CallbackQuery.edit_message_text(
-            helpers.HELP_4, reply_markup=keyboard
+            helpers.HELP_4, reply_markup=keyboard, disable_web_page_preview=True
         )
     elif cb == "hb5":
         await CallbackQuery.edit_message_text(
-            helpers.HELP_5, reply_markup=keyboard
+            helpers.HELP_5, reply_markup=keyboard, disable_web_page_preview=True
         )
     elif cb == "hb6":
         await CallbackQuery.edit_message_text(
-            helpers.HELP_6, reply_markup=keyboard
+            helpers.HELP_6, reply_markup=keyboard, disable_web_page_preview=True
         )
     elif cb == "hb7":
         await CallbackQuery.edit_message_text(
-            helpers.HELP_7, reply_markup=keyboard
+            helpers.HELP_7, reply_markup=keyboard, disable_web_page_preview=True
         )
     elif cb == "hb8":
         await CallbackQuery.edit_message_text(
-            helpers.HELP_8, reply_markup=keyboard
+            helpers.HELP_8, reply_markup=keyboard, disable_web_page_preview=True
         )
     elif cb == "hb10":
         await CallbackQuery.edit_message_text(
-            helpers.HELP_10, reply_markup=keyboard
+            helpers.HELP_10, reply_markup=keyboard, disable_web_page_preview=True
         )
     elif cb == "hb11":
         await CallbackQuery.edit_message_text(
-            helpers.HELP_11, reply_markup=keyboard
+            helpers.HELP_11, reply_markup=keyboard, disable_web_page_preview=True
         )
     elif cb == "hb12":
         await CallbackQuery.edit_message_text(
-            helpers.HELP_12, reply_markup=keyboard
+            helpers.HELP_12, reply_markup=keyboard, disable_web_page_preview=True
         )
     elif cb == "hb13":
         await CallbackQuery.edit_message_text(
-            helpers.HELP_13, reply_markup=keyboard
+            helpers.HELP_13, reply_markup=keyboard, disable_web_page_preview=True
         )
 
     elif cb == "hb14":
         await CallbackQuery.edit_message_text(
-            helpers.HELP_14, reply_markup=keyboard
+            helpers.HELP_14, reply_markup=keyboard, disable_web_page_preview=True
         )
     elif cb == "hb15":
         await CallbackQuery.edit_message_text(
-            helpers.HELP_15, reply_markup=keyboard
+            helpers.HELP_15, reply_markup=keyboard, disable_web_page_preview=True
         )
     elif cb == "hb16":
         await CallbackQuery.edit_message_text(
-            helpers.HELP_16, reply_markup=keyboard
+            helpers.HELP_16, reply_markup=keyboard, disable_web_page_preview=True
         )
     elif cb == "hb17":
         await CallbackQuery.edit_message_text(
-            helpers.HELP_17, reply_markup=keyboard
+            helpers.HELP_17, reply_markup=keyboard, disable_web_page_preview=True
         )
     elif cb == "hb18":
         await CallbackQuery.edit_message_text(
-            helpers.HELP_18, reply_markup=keyboard
+            helpers.HELP_18, reply_markup=keyboard, disable_web_page_preview=True
         )
     elif cb == "hb19":
         await CallbackQuery.edit_message_text(
-            helpers.HELP_19, reply_markup=keyboard
+            helpers.HELP_19, reply_markup=keyboard, disable_web_page_preview=True
         )
     elif cb == "hb20":
         await CallbackQuery.edit_message_text(
-            helpers.HELP_20, reply_markup=keyboard
+            helpers.HELP_20, reply_markup=keyboard, disable_web_page_preview=True
         )
     elif cb == "hb21":
         await CallbackQuery.edit_message_text(
-            helpers.HELP_21, reply_markup=keyboard
+            helpers.HELP_21, reply_markup=keyboard, disable_web_page_preview=True
         )
     elif cb == "hb22":
         await CallbackQuery.edit_message_text(
-            helpers.HELP_22, reply_markup=keyboard
+            helpers.HELP_22, reply_markup=keyboard, disable_web_page_preview=True
         )
 
 

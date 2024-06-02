@@ -1,5 +1,6 @@
 import time
 import random
+import asyncio
 from pyrogram import filters
 from pyrogram.enums import ChatType
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, Message
@@ -96,6 +97,11 @@ async def start_pm(client, message: Message, _):
                 )
     else:
         out = private_panel(_)
+        loading_message = await message.reply_text("**Loading**")
+        for _ in range(3):
+            await asyncio.sleep(1)
+            await loading_message.edit_text(f"**Loading{'.' * (_ % 3 + 1)}**")
+        await loading_message.delete()
         await message.reply_photo(
             photo=config.START_IMG_URL,
             caption=_["start_2"].format(message.from_user.mention, app.mention),
