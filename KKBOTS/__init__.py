@@ -1,4 +1,4 @@
-from KKBOTS.core.bot import VIP
+from KKBOTS.core.bot import KK
 from KKBOTS.core.dir import dirr
 from KKBOTS.core.git import git
 from KKBOTS.core.userbot import Userbot
