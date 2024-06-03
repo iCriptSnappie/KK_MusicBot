@@ -15,7 +15,7 @@ async def resume_com(cli, message: Message, _, chat_id):
     if await is_music_playing(chat_id):
         return await message.reply_text(_["admin_3"])
     await music_on(chat_id)
-    await VIP.resume_stream(chat_id)
+    await KK.resume_stream(chat_id)
     buttons_resume = [
         [
             

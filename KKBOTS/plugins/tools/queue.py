@@ -8,7 +8,7 @@ from pyrogram.types import CallbackQuery, InputMediaPhoto, Message
 import config
 from KKBOTS import app
 from KKBOTS.misc import db
-from KKBOTS.utils import VIPBin, get_channeplayCB, seconds_to_min
+from KKBOTS.utils import KKBin, get_channeplayCB, seconds_to_min
 from KKBOTS.utils.database import get_cmode, is_active_chat, is_music_playing
 from KKBOTS.utils.decorators.language import language, languageCB
 from KKBOTS.utils.inline import queue_back_markup, queue_markup
@@ -176,7 +176,7 @@ async def queued_tracks(client, CallbackQuery: CallbackQuery, _):
             return await CallbackQuery.edit_message_text(msg, reply_markup=buttons)
         if "✨" in msg:
             msg = msg.replace("✨", "")
-        link = await VIPBin(msg)
+        link = await KKBin(msg)
         med = InputMediaPhoto(media=link, caption=_["queue_3"].format(link))
         await CallbackQuery.edit_message_media(media=med, reply_markup=buttons)
     else:
