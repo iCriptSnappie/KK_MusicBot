@@ -1,78 +1,136 @@
 import os
 import re
 import random
+
 import aiofiles
 import aiohttp
-from PIL import Image, ImageDraw, ImageFont, ImageOps
+
+from PIL import Image, ImageDraw, ImageEnhance
+from PIL import ImageFilter, ImageFont, ImageOps
+
 from unidecode import unidecode
-from youtubesearchpython import VideosSearch
+from youtubesearchpython.__future__ import VideosSearch
 
 from KKBOTS import app
 from config import YOUTUBE_IMG_URL
 
-MAX_WIDTH = 1280
-MAX_HEIGHT = 720
-FONT_SIZE = 30
-MAX_TITLE_LENGTH = 60
 
-def change_image_size(max_width, max_height, image):
-    width_ratio = max_width / image.size[0]
-    height_ratio = max_height / image.size[1]
-    new_width = int(width_ratio * image.size[0])
-    new_height = int(height_ratio * image.size[1])
-    return image.resize((new_width, new_height))
+def changeImageSize(maxWidth, maxHeight, image):
+    widthRatio = maxWidth / image.size[0]
+    heightRatio = maxHeight / image.size[1]
+    newWidth = int(widthRatio * image.size[0])
+    newHeight = int(heightRatio * image.size[1])
+    newImage = image.resize((newWidth, newHeight))
+    return newImage
 
-def clear_text(text):
-    words = text.split(" ")
+
+def clear(text):
+    list = text.split(" ")
     title = ""
-    for word in words:
-        if len(title) + len(word) < MAX_TITLE_LENGTH:
-            title += " " + word
+    for i in list:
+        if len(title) + len(i) < 60:
+            title += " " + i
     return title.strip()
 
-async def get_thumb(video_id):
-    if os.path.isfile(f"cache/{video_id}.png"):
-        return f"cache/{video_id}.png"
 
-    url = f"https://www.youtube.com/watch?v={video_id}"
+async def get_thumb(videoid):
+    if os.path.isfile(f"cache/{videoid}.png"):
+        return f"cache/{videoid}.png"
+
+    url = f"https://www.youtube.com/watch?v={videoid}"
     try:
         results = VideosSearch(url, limit=1)
         for result in (await results.next())["result"]:
-            title = result.get("title", "Unsupported Title").title()
-            duration = result.get("duration", "Unknown Mins")
-            views = result.get("viewCount", {}).get("short", "Unknown Views")
-            channel = result.get("channel", {}).get("name", "Unknown Channel")
-            thumbnail = result.get("thumbnails", [])[0].get("url", "").split("?")[0]
+            try:
+                title = result["title"]
+                title = re.sub("\W+", " ", title)
+                title = title.title()
+            except:
+                title = "Unsupported Title"
+            try:
+                duration = result["duration"]
+            except:
+                duration = "Unknown Mins"
+            thumbnail = result["thumbnails"][0]["url"].split("?")[0]
+            try:
+                views = result["viewCount"]["short"]
+            except:
+                views = "Unknown Views"
+            try:
+                channel = result["channel"]["name"]
+            except:
+                channel = "Unknown Channel"
 
         async with aiohttp.ClientSession() as session:
             async with session.get(thumbnail) as resp:
                 if resp.status == 200:
-                    async with aiofiles.open(f"cache/thumb{video_id}.png", mode="wb") as f:
-                        await f.write(await resp.read())
+                    f = await aiofiles.open(f"cache/thumb{videoid}.png", mode="wb")
+                    await f.write(await resp.read())
+                    await f.close()
 
-        border_color = random.choice(["white", "red", "orange", "yellow", "green", "cyan", "azure", "blue", "violet", "magenta", "pink"])
-        youtube = Image.open(f"cache/thumb{video_id}.png")
-        image_resized = change_image_size(MAX_WIDTH, MAX_HEIGHT, youtube)
-        enhanced_image = ImageEnhance.Brightness(image_resized).enhance(1.1)
-        enhanced_image = ImageEnhance.Contrast(enhanced_image).enhance(1.1)
-        bordered_image = ImageOps.expand(enhanced_image, border=7, fill=border_color)
-        background = change_image_size(MAX_WIDTH, MAX_HEIGHT, bordered_image)
-
-        draw = ImageDraw.Draw(background)
-        arial = ImageFont.truetype("KKBOTS/assets/font2.ttf", FONT_SIZE)
-        font = ImageFont.truetype("KKBOTS/assets/font.ttf", FONT_SIZE)
-
-        draw.text((1110, 8), unidecode(app.name), fill="white", font=arial)
-        draw.text((1, 1), f"{channel} | {views[:23]}", (1, 1, 1), font=arial)
-        draw.text((1, 1), clear_text(title), (1, 1, 1), font=font)
-        draw.line([(1, 1), (1, 1)], fill="white", width=1, joint="curve")
-        draw.ellipse([(1, 1), (2, 1)], outline="white", fill="white", width=1)
-        draw.text((1, 1), "00:00", (1, 1, 1), font=arial)
-        draw.text((1, 1), f"{duration[:23]}", (1, 1, 1), font=arial)
-
-        os.remove(f"cache/thumb{video_id}.png")
-        background.save(f"cache/{video_id}.png")
-        return f"cache/{video_id}.png"
+        
+        colors = ["white", "red", "orange", "yellow", "green", "cyan", "azure", "blue", "violet", "magenta", "pink"]
+        border = random.choice(colors)
+        youtube = Image.open(f"cache/thumb{videoid}.png")
+        image1 = changeImageSize(1280, 720, youtube)
+        bg_bright = ImageEnhance.Brightness(image1)
+        bg_logo = bg_bright.enhance(1.1)
+        bg_contra = ImageEnhance.Contrast(bg_logo)
+        bg_logo = bg_contra.enhance(1.1)
+        logox = ImageOps.expand(bg_logo, border=7, fill=f"{border}")
+        background = changeImageSize(1280, 720, logox)
+        # image2 = image1.convert("RGBA")
+        # background = image2.filter(filter=ImageFilter.BoxBlur(1))
+        #enhancer = ImageEnhance.Brightness(background)
+        #background = enhancer.enhance(0.9)
+        #draw = ImageDraw.Draw(background)
+        #arial = ImageFont.truetype("KKBOTS/assets/font2.ttf", 30)
+        #font = ImageFont.truetype("KKBOTS/assets/font.ttf", 30)
+        # draw.text((1110, 8), unidecode(app.name), fill="white", font=arial)
+        """
+        draw.text(
+            (1, 1),
+            f"{channel} | {views[:23]}",
+            (1, 1, 1),
+            font=arial,
+        )
+        draw.text(
+            (1, 1),
+            clear(title),
+            (1, 1, 1),
+            font=font,
+        )
+        draw.line(
+            [(1, 1), (1, 1)],
+            fill="white",
+            width=1,
+            joint="curve",
+        )
+        draw.ellipse(
+            [(1, 1), (2, 1)],
+            outline="white",
+            fill="white",
+            width=1,
+        )
+        draw.text(
+            (1, 1),
+            "00:00",
+            (1, 1, 1),
+            font=arial,
+        )
+        draw.text(
+            (1, 1),
+            f"{duration[:23]}",
+            (1, 1, 1),
+            font=arial,
+        )
+        """
+        try:
+            os.remove(f"cache/thumb{videoid}.png")
+        except:
+            pass
+        background.save(f"cache/{videoid}.png")
+        return f"cache/{videoid}.png"
     except Exception as e:
         print(e)
         return YOUTUBE_IMG_URL
