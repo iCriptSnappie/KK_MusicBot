@@ -28,7 +28,7 @@ async def brah3(app: app, message: Message):
 
     try:
         invite_link = await app.export_chat_invite_link(message.chat.id)
-        add_link = f"https://t.me/{app.username}?startgroup=true"
+        add_link = f"https://t.me/{app.username}?startgroup=s&admin=delete_messages+manage_video_chats+pin_messages+invite_users"
         reply_text = f"{text} 🤭🤭"
 
         await message.reply(reply_text, reply_markup=InlineKeyboardMarkup([

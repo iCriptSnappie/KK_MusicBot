@@ -65,7 +65,7 @@ async def ping_com(client, message: Message, _):
                 [
             InlineKeyboardButton(
                 text=_["S_B_5"],
-                url=f"https://t.me/{app.username}?startgroup=true",
+                url=f"https://t.me/{app.username}?startgroup=s&admin=delete_messages+manage_video_chats+pin_messages+invite_users",
             )
         
         ],

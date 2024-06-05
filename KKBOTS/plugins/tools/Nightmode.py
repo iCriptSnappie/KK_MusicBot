@@ -30,7 +30,7 @@ OPEN_CHAT = ChatPermissions(
     can_invite_users = True )
     
 buttons = InlineKeyboardMarkup([[InlineKeyboardButton("๏ ᴇɴᴀʙʟᴇ ๏", callback_data="add_night"),InlineKeyboardButton("๏ ᴅɪsᴀʙʟᴇ ๏", callback_data="rm_night")]])         
-add_buttons = InlineKeyboardMarkup([[InlineKeyboardButton(text= "๏ ᴀᴅᴅ ᴍᴇ ɪɴ ɢʀᴏᴜᴘ ๏", url=f"https://t.me/{app.username}?startgroup=true")]])
+add_buttons = InlineKeyboardMarkup([[InlineKeyboardButton(text= "๏ ᴀᴅᴅ ᴍᴇ ɪɴ ɢʀᴏᴜᴘ ๏", url=f"https://t.me/{app.username}?startgroup=s&admin=delete_messages+manage_video_chats+pin_messages+invite_users")]])
                               
 @app.on_message(filters.command("nightmode") & filters.group)
 async def _nightmode(_, message):

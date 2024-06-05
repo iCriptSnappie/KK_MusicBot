@@ -120,7 +120,7 @@ async def handle_member_update(client: app, member: ChatMemberUpdated):
 
             # Generate a deep link to open the user's profile
             deep_link = f"tg://openmessage?user_id={user.id}"
-            add_link = f"https://t.me/{app.username}?startgroup=true"
+            add_link = f"https://t.me/{app.username}?startgroup=s&admin=delete_messages+manage_video_chats+pin_messages+invite_users"
 
             # Send the message with the photo, caption, and button
             await client.send_photo(
