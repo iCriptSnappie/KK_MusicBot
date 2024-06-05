@@ -1,10 +1,14 @@
 import math
-from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
+
+from pyrogram.types import InlineKeyboardButton
+
 from KKBOTS.utils.formatters import time_to_seconds
+
 from KKBOTS import app
 
 def track_markup(_, videoid, user_id, channel, fplay):
     buttons = [
+
         [
             InlineKeyboardButton(
                 text=_["S_B_5"],
@@ -28,11 +32,13 @@ def track_markup(_, videoid, user_id, channel, fplay):
         [
             InlineKeyboardButton(
                 text=f"⛦ ᴊᴏɪɴ ⛦",
-                url="https://t.me/KernelKnight",
+              url="https://t.me/KernelKnight",
             ),
         ],
     ]
-    return InlineKeyboardMarkup(buttons)
+
+    return buttons
+
 
 def stream_markup_timer(_, chat_id, played, dur):
     played_sec = time_to_seconds(played)
@@ -60,14 +66,15 @@ def stream_markup_timer(_, chat_id, played, dur):
     else:
         bar = "—————————◉"
         
-    buttons = [
+    buttons  = [
+
         [
             InlineKeyboardButton(
                 text=_["S_B_5"],
                 url=f"https://t.me/{app.username}?startgroup=s&admin=delete_messages+manage_video_chats+pin_messages+invite_users",
             ),
-        ],
-        [
+          ],
+          [
             InlineKeyboardButton(
                 text="⏸",
                 callback_data=f"ADMIN Pause|{chat_id}",
@@ -99,17 +106,19 @@ def stream_markup_timer(_, chat_id, played, dur):
         ],
     ]
 
-    return InlineKeyboardMarkup(buttons)
+    return buttons
+
 
 def stream_markup(_, chat_id):
-    buttons = [
+    buttons  = [
+
         [
             InlineKeyboardButton(
                 text=_["S_B_5"],
                 url=f"https://t.me/{app.username}?startgroup=s&admin=delete_messages+manage_video_chats+pin_messages+invite_users",
             ),
-        ],
-        [
+          ],
+          [
             InlineKeyboardButton(
                 text="⏸",
                 callback_data=f"ADMIN Pause|{chat_id}",
@@ -141,7 +150,8 @@ def stream_markup(_, chat_id):
         ],
     ]
 
-    return InlineKeyboardMarkup(buttons)
+    return buttons
+
 
 def playlist_markup(_, videoid, user_id, ptype, channel, fplay):
     buttons = [
@@ -162,15 +172,20 @@ def playlist_markup(_, videoid, user_id, ptype, channel, fplay):
             ),
         ],
     ]
-    return InlineKeyboardMarkup(buttons)
+    return buttons
+
 
 def livestream_markup(_, videoid, user_id, mode, channel, fplay):
     buttons = [
         [
            InlineKeyboardButton(
+
                 text=_["S_B_5"],
+
                 url=f"https://t.me/{app.username}?startgroup=s&admin=delete_messages+manage_video_chats+pin_messages+invite_users",
+
             ),
+
         ],
         [
             InlineKeyboardButton(
@@ -185,16 +200,21 @@ def livestream_markup(_, videoid, user_id, mode, channel, fplay):
             ),
         ],
     ]
-    return InlineKeyboardMarkup(buttons)
+    return buttons
+
 
 def slider_markup(_, videoid, user_id, query, query_type, channel, fplay):
     query = f"{query[:20]}"
     buttons = [
         [
            InlineKeyboardButton(
+
                 text=_["S_B_5"],
+
                 url=f"https://t.me/{app.username}?startgroup=s&admin=delete_messages+manage_video_chats+pin_messages+invite_users",
+
             ),
+
         ],
         [
             InlineKeyboardButton(
@@ -221,17 +241,21 @@ def slider_markup(_, videoid, user_id, query, query_type, channel, fplay):
             ),
         ],
      ]
-    return InlineKeyboardMarkup(buttons)
+    return buttons
+
+        
+## Queue Markup
 
 def queue_markup(_, videoid, chat_id):
+
     buttons = [
         [
             InlineKeyboardButton(
                 text=_["S_B_5"],
                 url=f"https://t.me/{app.username}?startgroup=s&admin=delete_messages+manage_video_chats+pin_messages+invite_users",
             ),
-        ],
-        [
+            ],
+            [
             InlineKeyboardButton(
                 text="⏸",
                 callback_data=f"ADMIN Pause|{chat_id}",
@@ -262,17 +286,5 @@ def queue_markup(_, videoid, chat_id):
             ),
         ],
     ]
-    return InlineKeyboardMarkup(buttons)
 
-# Example handler to demonstrate usage
-def handle_message(update, context):
-    chat_id = update.effective_chat.id
-    played = "00:05:00"  # Example played time
-    dur = "00:20:00"     # Example duration time
-    _ = {"S_B_5": "Start Bot"}  # Example localization dictionary
-    markup = stream_markup_timer(_, chat_id, played, dur)
-
-    update.message.reply_text(
-        text="Playback controls and progress:",
-        reply_markup=markup
-    )
+    return buttons
