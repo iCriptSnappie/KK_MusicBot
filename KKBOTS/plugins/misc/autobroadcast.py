@@ -9,24 +9,15 @@ from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 AUTO_GCASTS = "{AUTO_GCAST}" if AUTO_GCAST else False
 
 
-MESSAGE = f"""**🔼Introducing the Advanced Music Player Bot for Telegram Groups & Channels! 💌🎊
-
-🔥🔥 Play music directly in voice chat with ease! 🎧🎧�
-
-**Features:**
-
-- Play, pause, control volume directly in chat.
-- Welcome messages, left chat notifications, and more!
-- Tag all, voice chat tag, ban/mute, lyrics, song/video downloads, and more! 💫💫�
-
-🌈🌈🌈Simply click [here](https://t.me/{app.username}?start=help) or use the command "/start".
-
-🆒 **Bot Username:** @{app.username}"""
+MESSAGE = f"""ᴛʜɪs ɪs [{app.name}](https://t.me/{app.username})
+➻ ᴀ ғᴀsᴛ & ᴘᴏᴡᴇʀғᴜʟ ᴛᴇʟᴇɢʀᴀᴍ ᴍᴜsɪᴄ ᴘʟᴀʏᴇʀ ʙᴏᴛ ᴡɪᴛʜ sᴏᴍᴇ ᴀᴡᴇsᴏᴍᴇ ғᴇᴀᴛᴜʀᴇs.
+ 
+ Sᴜᴘᴘᴏʀᴛᴇᴅ Pʟᴀᴛғᴏʀᴍs : ʏᴏᴜᴛᴜʙᴇ, sᴘᴏᴛɪғʏ, ʀᴇssᴏ, ᴀᴘᴘʟᴇ ᴍᴜsɪᴄ ᴀɴᴅ sᴏᴜɴᴅᴄʟᴏᴜᴅ."""
 
 BUTTON = InlineKeyboardMarkup(
     [
         [
-            InlineKeyboardButton("🙈 ᴋɪᴅɴᴀᴘ ᴍᴇ 🙈", url=f"https://t.me/{app.username}?startgroup=s&admin=delete_messages+manage_video_chats+pin_messages+invite_users")
+            InlineKeyboardButton("ᴀᴅᴅ ᴍᴇ ɪɴ ʏᴏᴜʀ ɢʀᴏᴜᴘ", url=f"https://t.me/{app.username}?startgroup=s&admin=delete_messages+manage_video_chats+pin_messages+invite_users")
         ]
     ]
 )
