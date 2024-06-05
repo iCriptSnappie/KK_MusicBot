@@ -80,6 +80,11 @@ TAGMES = [
     "Koi Song Play Kro Na😪",
     "Nice To Meet Uh☺",
     "Hello🙊",
+    "kya yaar itna gumsoom rehte ho thoda ladkio se v baat kar liya kro achha lagega tumhe",
+    "tumhari gf hai??",
+    "bhai ye kya sun raha hu me?",
+    "mujhe tumhare bare me kuch pata chala hai, kya wo sach hai??",
+    "tum owner ki bandi se baat krte ho ruk avi owner ko batata hu",
     "Study Comlete Hua??😺",
     "Bolo Na Kuch Yrr🥲",
     "Sonali Kon Hai...??😅",
@@ -115,6 +120,10 @@ TAGMES = [
     "Kaha Se Ho Aap..?🤔",
     "Chatting Kar Lo Na..🥺",
     "Me Masoom Hu Na🥺🥺",
+    "owner ka lafda ho gya aaj bhai tamasha dekhnge saath me😁😀",
+    "bhai owner ka breakup ho gya😥",
+    "so sad for you, suna hai tumhara breakup ho gya😥",
+    "oo hello dm mat kar mujhe, nhi tera chalan kat jayega",
     "Kal Maja Aya Tha Na🤭😅",
     "Group Me Bat Kyu Nahi Karte Ho😕",
     "Aap Relationship Me Ho..?👀",
@@ -129,7 +138,8 @@ TAGMES = [
     "Aao Party Karte Hain😋🥳",
     "Hemloo🧐",
     "Mujhe Bhul Gye Kya🥺",
-    "Yaha Aa Jao:-[@KernelKnightChats]  Masti Karenge 🤭🤭",
+    "apne group me [ @KK_VCMUSICBOT ] ko add kro or lag free music suno",
+    "muast music bot hai [ @KK_VCMUSICBOT ] apne group me add kro or lag free music suno",
     "Truth And Dare Kheloge..? 😊",
     "Aaj Mummy Ne Data Yr🥺🥺",
     "Join Kar Lo🤗",
@@ -138,6 +148,36 @@ TAGMES = [
     "My Cute Owner{ @KernelKnight}🥰",
     "Kaha Khoye Ho Jaan😜",
     "Good N8 Ji Bhut Rat Ho gyi🥰",
+]
+
+NIGHT_TAG = [
+    "Oye bahot raat ho gyi, sona nhi hai kya??",
+    "oyee hoyee kiske saath baat kar rhe ho😁",
+    "aaj raat ka scene bana le🤤",
+    "kya kr rhe ho baby??",
+    "itni raat me razai me ghus kr phone chala rhe ho ruko tumhari mummy ko bolti hu🙂",
+    "raat bahot ho gyi so jao aap, nhi to group me khubsurat khubsurat ladkio se baat kro hehe 😍😘",
+    "avi tak jaag rhe ho...hmm hmmm kya baat hai 😂",
+    "aadhi raat ko ham doston..ki soi aatma ko jagaate hai...aur unake jaagane ke baad..ham khud so jaate hai !! 🤣😂🤣",
+    "Oye So Gye Kya Online Aao😊",
+    "goog night 😪",
+    "so ja bachhe",
+    "oye itni raat me akele kya kar raha aaj group me mast cute girls active hai aaj grup me",
+    "good night radhe radhe",
+    "so jao kl jaldi v uthna hai tumhe nhi to mummy ki flying chappal tumhare muhh pe padegi hehe",
+    "so jao yaar wo nhi aane wali",
+    "or bhai bhabhi kaisi hai??",
+    "avi tak jag rhe ho? [@KK_VCMUSICBOT] ko apne group me add kro or lag free music suno..😋😘",
+    "itni raat me kiske saath gulu gulu kr rhe ho..😁😂",
+    "chupchap phone rakho or so jao 11 baj rhe 😐",
+    "flirt karna band kr bhai raat bahaot ho gyi ab soja or bholi bhali ladkio ko v sone de",
+    "mummy ko batau tere ki tu aadhi raat me masoom ladkio ke saath baat karta hai 😎",
+    "so jao babu, nhi to apke dark circles aajayenge😥",
+    "maine raat ko jaag kar dekha hai, subha hone me saalon lagte hain 🙃",
+    "Raat me jagne wala har saksh aashiq nhi hota shaheb, kuch ko zimmedari sone nhi deti"
+    "i love you baby😍, ye lo puchhiii😘😘 ab so jao chup chap!!",
+    "mukkhi maar dungi ..so jao nhi to",
+    "sab pata hai mujhe tum apne bandi se baat kr rhe ho, ruko tumhe papa ko batata hu avi",
 ]
 
 VC_TAG = [
@@ -154,11 +194,22 @@ VC_TAG = [
     "VC AANA EK CHIJ DIKHTI HU🙄",
     "VC ME CHECK KRKE BATAO TO SONG PLAY HO RHA H?🤔",
     "VC JOIN KRNE ME KYA JATA H THORA DER KAR LO NA🙂",
+    "OYE JANU VC AAO ME GANA SUNA RHI HU",
+    "OYE EK CUTE LADKI VC ME HAI JALDI",
+    "AAJA VC MOVIE DEKHNGE SAATH ME",
+    "BHABHI KO LE KR JALDI VC AAO EK SURPRISE HAI",
+    "OYEE JALDI VC AA GROUP KA OWNER OR USKI BANDI KA MAST FIGHT CHL RHA 😆😁",
+    "GROUP KI SABSE CUTE GIRL VC PE LIVE HAI JALDI AA BHAI",
+    "JALDI JOIN KAR VC OWNER ROMANCE KAR RAHA VC PE🤤😂",
+    "OWNER KA PANGA HO GYA VC PE AAJA BHAI TERA HI INTEZAR KAR RAHA",
+    "BHAI KYA KAR DIYA TUNE...TUJHSE YEH UMMID NHI THI, VC PE TERI HI BAAT CHL RHI 😔",
+    "VC TAPAK TAJASWI LONDE",
+    "CUTE BANDI VC PE HAI AAJ JAO JALDI"
 ]
 
 
 
-@app.on_message(filters.command(["tagall", "all", "tagmember", "utag", "stag", "hftag", "bstag", "eftag", "tag", "etag", "utag", "atag" ], prefixes=PREFIXES))
+@app.on_message(filters.command(["tagall", "all", "utag"], prefixes=PREFIXES))
 async def mentionall(client, message):
     chat_id = message.chat.id
     if message.chat.type == ChatType.PRIVATE:
@@ -262,8 +313,51 @@ async def mention_allvc(client, message):
         pass
 
 
+@app.on_message(filters.command(["ntag"], prefixes=PREFIXES))
+async def mention_allvc(client, message):
+    chat_id = message.chat.id
+    if message.chat.type == ChatType.PRIVATE:
+        return await message.reply("ᴛʜɪs ᴄᴏᴍᴍᴀɴᴅ ɪs ᴏɴʟʏ ғᴏʀ ɢʀᴏᴜᴘs.")
 
-@app.on_message(filters.command(["cancel", "stop", "stopvctag"]))
+    is_admin = False
+    try:
+        participant = await client.get_chat_member(chat_id, message.from_user.id)
+    except UserNotParticipant:
+        is_admin = False
+    else:
+        if participant.status in (
+            ChatMemberStatus.ADMINISTRATOR,
+            ChatMemberStatus.OWNER
+        ):
+            is_admin = True
+    if not is_admin:
+        return await message.reply("ʏᴏᴜ ᴀʀᴇ ɴᴏᴛ ᴀɴ ᴀᴅᴍɪɴ, ᴏɴʟʏ ᴀᴅᴍɪɴs ᴄᴀɴ ᴛᴀɢ ᴍᴇᴍʙᴇʀs.")
+    if chat_id in spam_chats:
+        return await message.reply("ᴘʟᴇᴀsᴇ ᴀᴛ ғɪʀsᴛ sᴛᴏᴘ ʀᴜɴɴɪɴɢ ᴍᴇɴᴛɪᴏɴ ᴘʀᴏᴄᴇss...")
+    spam_chats.append(chat_id)
+    usrnum = 0
+    usrtxt = ""
+    async for usr in client.get_chat_members(chat_id):
+        if not chat_id in spam_chats:
+            break
+        if usr.user.is_bot:
+            continue
+        usrnum += 1
+        usrtxt += f"[{usr.user.first_name}](tg://user?id={usr.user.id}) "
+
+        if usrnum == 1:
+            txt = f"{usrtxt} {random.choice(NIGHT_TAG)}"
+            await client.send_message(chat_id, txt)
+            await asyncio.sleep(6)
+            usrnum = 0
+            usrtxt = ""
+    try:
+        spam_chats.remove(chat_id)
+    except:
+        pass
+
+
+@app.on_message(filters.command(["cancel", "stop", "stopvctag", "stoptag", "stopntag"]))
 async def cancel_spam(client, message):
     if not message.chat.id in spam_chats:
         return await message.reply("ᴄᴜʀʀᴇɴᴛʟʏ ɪ'ᴍ ɴᴏᴛ ᴛᴀɢɢɪɴɢ.")
@@ -285,4 +379,4 @@ async def cancel_spam(client, message):
             spam_chats.remove(message.chat.id)
         except:
             pass
-        return await message.reply("♦ ᴍᴇɴᴛɪᴏɴ ᴘʀᴏᴄᴇss sᴛᴏᴘᴘᴇᴅ ♦")
+        return await message.reply("ᴍᴇɴᴛɪᴏɴ ᴘʀᴏᴄᴇss sᴛᴏᴘᴘᴇᴅ")
