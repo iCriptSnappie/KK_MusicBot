@@ -1,13 +1,7 @@
 
 from pyrogram import Client, filters
-import requests
 import random
-import os
-import re
-import asyncio
-import time
 from KKBOTS import app
-
 from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton
 
 SHAYRI = [
@@ -28,42 +22,30 @@ SHAYRI = [
 # Command
 SHAYRI_COMMAND = ["gf", "bf", "shayri", "shayari", "sari", "shari", "love"]
 
-@app.on_message(
-    filters.command(SHAYRI_COMMAND)
-    & filters.group
-    )
-async def help(client: Client, message: Message):
-    await message.reply_text(
-        text = random.choice(SHAYRI),
-        reply_markup=InlineKeyboardMarkup(
-            [
-                [
-                    InlineKeyboardButton(
-                        "ɢʀᴏᴜᴘ", url=f"https://t.me/KernelKnightChats"),
-                    InlineKeyboardButton(
-                        "ᴄʜᴀɴɴᴇʟ", url=f"https://t.me/KernelKnight")
-                    
-                ]
-            ]
-        ),
-    )
+# Command handler for groups
+@app.on_message(filters.command(SHAYRI_COMMAND) & filters.group)
+async def shayari_group(client: Client, message: Message):
+    await send_shayari(message)
 
-@app.on_message(
-    filters.command(SHAYRI_COMMAND)
-    & filters.private
-    )
-async def help(client: Client, message: Message):
-    await message.reply_text(
-        text = random.choice(SHAYRI),
-        reply_markup=InlineKeyboardMarkup(
+# Command handler for private messages
+@app.on_message(filters.command(SHAYRI_COMMAND) & filters.private)
+async def shayari_private(client: Client, message: Message):
+    await send_shayari(message)
+
+# Function to send shayari with inline keyboard
+async def send_shayari(message: Message):
+    if SHAYRI:
+        shayari_text = random.choice(SHAYRI)
+        reply_markup = InlineKeyboardMarkup(
             [
                 [
                     InlineKeyboardButton(
-                        "ɢʀᴏᴜᴘ", url=f"https://t.me/KernelKnightChats"),
+                        "ɢʀᴏᴜᴘ", url="https://t.me/KernelKnightChats"),
                     InlineKeyboardButton(
-                        "ᴄʜᴀɴɴᴇʟ", url=f"https://t.me/KernelKnight")
-                    
+                        "ᴄʜᴀɴɴᴇʟ", url="https://t.me/KernelKnight")
                 ]
             ]
-        ),
-    )
+        )
+        await message.reply_text(text=shayari_text, reply_markup=reply_markup)
+    else:
+        await message.reply_text(text="No shayaris available right now.")
