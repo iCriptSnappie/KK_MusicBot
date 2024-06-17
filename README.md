@@ -32,7 +32,7 @@
 
 
 <p align="center">
-  <img src="https://te.legra.ph/file/7b51adb8645bb87510996.jpg">
+  <img src="https://telegra.ph/file/4a9652117fd87697d0624.jpg">
 </p>
 
 **𝙏𝙀𝙎𝙏 𝘽𝙊𝙏 ➣ [『𝗠𝗘𝗟𝗢𝗗𝗬 ✘ 𝗠𝗨𝗦𝗜𝗖』](https://t.me/KK_VCMUSICBOT)**
